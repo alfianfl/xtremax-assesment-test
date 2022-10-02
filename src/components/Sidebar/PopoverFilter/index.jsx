@@ -56,15 +56,16 @@ function PopoverFilter() {
           >
             <Popover.Panel className="absolute w-full mt-4">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                <div className="grid gap-8 bg-white p-7 lg:grid-cols-1 h-[300px] overflow-auto">
+                <dl className="grid grid-cols-1 bg-white h-[300px] overflow-auto">
                   {attractions.map((item) => (
-                    <div className="ml-4" key={item.name}>
-                      <p className="text-sm font-medium text-gray-900">
-                        {item.name}
-                      </p>
-                    </div>
+                    <dt
+                      key={item.name}
+                      className="text-sm font-medium p-3 text-gray-900 cursor-pointer hover:bg-gray-200"
+                    >
+                      {item.name}
+                    </dt>
                   ))}
-                </div>
+                </dl>
               </div>
             </Popover.Panel>
           </Transition>

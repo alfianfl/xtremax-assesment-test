@@ -42,7 +42,7 @@ const navLink = [
 function Sidebar() {
   const [activeLink, setActiveLink] = useState('Browse');
   return (
-    <aside className="h-screen bg-[#313541] flex">
+    <aside className="h-screen bg-[#313541] flex z-20">
       <div className="main-sidebar flex flex-col space-y-0.5">
         {navLink.map((nav, index) => (
           <NavButton
