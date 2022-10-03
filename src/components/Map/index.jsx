@@ -54,6 +54,8 @@ function Map() {
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_API_KEY }}
         defaultZoom={15}
+        // if the selected data is true, zoom view on the map will be 17
+        zoom={selectedData ? 17 : 15}
         center={center}
       >
         {listAttraction.map((data) => (
