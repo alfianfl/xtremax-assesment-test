@@ -1,23 +1,13 @@
-
-export const fetchMapData = () => {
-
-};
-
-export const fetchMapDataRequest = () => {
+export const selectData= (data) => {
   return {
-    type: "FETCH_MAP_DATA_REQUEST",
+    type: "SELECT_DATA",
+    data
   };
 };
 
-export const fetchMapDataSuccess = (venue) => {
+export const selectDataFromMenu = (data) => {
   return {
-    type: "FETCH_MAP_DATA_SUCCESS",
-    payload: venue,
-  };
-};
-export const fetchMapDataFailure = (errMsg) => {
-  return {
-    type: "FETCH_MAP_DATA_FAILURE",
-    payload: errMsg,
+    type: "SELECT_DATA_FROM_MENU",
+    data
   };
 };

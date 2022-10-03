@@ -14,14 +14,14 @@ const mapDataReducer = (state = initialState, action) => {
     case 'FETCH_MAP_DATA_SUCCESS':
       return {
         loading: false,
-        data: action.payload,
+        data: action.data,
         error: ''
       };
     case 'FETCH_MAP_DATA_FAILURE':
       return {
         loading: false,
         data: [],
-        error: action.payload
+        error: action.data
       };
     default:
       return state;

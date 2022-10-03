@@ -1,18 +1,44 @@
-import React from 'react'
-import MarkerIcon from "../../../assets/img/marker.png"
+import React from 'react';
+import MarkerIcon from '../../../assets/img/marker.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectData } from '../../../redux/actions/selectedDataAction';
 
-function MapMarker() {
+function MapMarker({ data }) {
+  const selectedData = useSelector((state) => state.selectedData.data);
+  const dispatch = useDispatch();
+  const selectedCondition = selectedData && selectedData.place_name === data.place_name;
+
+  const selectMarkerHandler = (data) => {
+    dispatch(selectData(data));
+  };
   return (
-    <div className='relative cursor-pointer'>
-      {/* left-[70px] top-7 bg-[#92D72E] pl-6 pr-2 py-2 scale-[2] bg-[#92D72E]*/}
-      <div className='bg-[#282C37] left-2 top-1.5 bg-[#92D72E absolute text-white px-3 py-2 rounded-l-full whitespace-nowrap'>
-        <h3 className='font-medium'>Merlion</h3>
-        {/* <p className='text-[0.6em]'>10 Bayfont Avenue, Singapore</p> */}
+    <div
+      className={`relative cursor-pointer ${ selectedCondition && "z-50"}`}
+      onClick={() => selectMarkerHandler(data)}
+    >
+      <div
+        className={`${
+          selectedCondition
+            ? 'bg-[#92D72E] left-4 pl-12 pr-4 space-y-1'
+            : 'bg-[#282C37] left-2 px-3 z-30'
+        } absolute top-[10%] whitespace-nowrap text-white py-2 rounded-l-full`}
+      >
+        <h3 className={`${ selectedCondition ? "text-[1.25rem]" : "text-[0.8rem]"}`}>{data.place_name}</h3>
+        {selectedCondition && (
+          <p className="text-[1em]">{data.address}</p>
+        )}
       </div>
-      {/* h-[172px] w-[109px] */}
-      <img className='h-[71px] w-[45px]' src={MarkerIcon} alt={`marker`} />
+      <img
+        className={`${
+          selectedCondition
+            ? 'w-[109px]'
+            : 'w-[45px] '
+        }`}
+        src={MarkerIcon}
+        alt={`marker-${data.place_name}`}
+      />
     </div>
-  )
+  );
 }
 
-export default React.memo(MapMarker)
+export default React.memo(MapMarker);

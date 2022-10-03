@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import settings from '../../assets/img/settings.png';
 import close from '../../assets/img/close.png';
 import faq from '../../assets/img/faq.png';
+import { selectData } from '../../redux/actions/selectedDataAction';
 
 const options = [
   {
@@ -19,10 +21,12 @@ const options = [
 ];
 
 function Header() {
+  const dispatch = useDispatch();
   const handlerOption = (optionName) => {
+    // cases when user click each nav icon
     switch (optionName) {
       case 'close':
-        console.log('test');
+        dispatch(selectData(null))
         break;
       default:
     }

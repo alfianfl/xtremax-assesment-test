@@ -1,6 +1,6 @@
 const initialState = {
   data: null,
-  dataFromMenu: null
+  selectedAttractionFromMenu: null
 };
 
 const selectedDataReducer = (state = initialState, action) => {
@@ -8,12 +8,12 @@ const selectedDataReducer = (state = initialState, action) => {
     case 'SELECT_DATA':
       return {
         ...state,
-        data: action.payload
+        data: action.data
       };
     case 'SELECT_DATA_FROM_MENU':
       return {
         ...state,
-        dataFromMenu: action.payload
+        selectedAttractionFromMenu: action.data
       };
     default:
       return state;

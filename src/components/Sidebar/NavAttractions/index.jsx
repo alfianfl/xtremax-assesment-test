@@ -1,5 +1,7 @@
 import React from 'react';
 import { Disclosure } from '@headlessui/react';
+import { useDispatch } from 'react-redux';
+import { selectDataFromMenu } from '../../../redux/actions/selectedDataAction';
 
 const touristAttractions = [
   { attraction: 'Merlion' },
@@ -35,13 +37,20 @@ const touristAttractions = [
 ];
 
 function NavAttractions() {
+
+  const dispatch = useDispatch();
+  const selectedDataMenuHandler = (attraction) => {
+    dispatch(selectDataFromMenu(attraction));
+  };
+
   return (
     <dl className="mt-[45px]">
       {touristAttractions.map((menu, index) =>
         menu.resorts ? (
-          <Disclosure key={menu.attraction}>
+          <Disclosure key={index}>
             <Disclosure.Button
               className={`text-left w-full text-white font-medium cursor-pointer p-2 border-t last:border-y border-[#242832]`}
+              onClick={() => selectedDataMenuHandler(menu.attraction, index)}
             >
               <dt className="flex justify-between items-center hover:text-[#92D72E] hover:bg-[#1C1F27] py-1 px-2">
                 <h6 className="text-base">{menu.attraction}</h6>
@@ -61,8 +70,9 @@ function NavAttractions() {
           </Disclosure>
         ) : (
           <div
-            key={index}
+            key={menu.attraction}
             className={`text-left w-full text-white font-medium cursor-pointer p-2 border-t last:border-y border-[#242832]`}
+            onClick={() => selectedDataMenuHandler(menu.attraction)}
           >
             <dt className="flex justify-between items-center hover:text-[#92D72E] hover:bg-[#1C1F27] py-1 px-2">
               <h6 className="text-base">{menu.attraction}</h6>

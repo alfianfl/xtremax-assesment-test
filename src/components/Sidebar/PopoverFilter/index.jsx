@@ -1,5 +1,5 @@
-import { Popover, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
+import { Popover, Transition } from '@headlessui/react';
 
 const attractions = [
   {
@@ -34,7 +34,7 @@ const attractions = [
 function PopoverFilter() {
   return (
     <Popover className="relative">
-      {({ open }) => (
+      {() => (
         /* Use the `open` state to conditionally change the direction of the chevron icon. */
         <>
           <Popover.Button className="text-left w-full text-white font-medium cursor-pointer p-2 border-t last:border-y border-[#242832] focus:outline-none">
